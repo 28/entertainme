@@ -43,8 +43,9 @@
 
     <scm>
         <url>https://github.com/28/entertainme</url>
-        <connection>scm:git:git@github.com:28/entertainme.git</connection>
+        <connection>scm:git:https://github.com/28/entertainme.git</connection>
         <developerConnection>scm:git:git@github.com:28/entertainme.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
     <build>
