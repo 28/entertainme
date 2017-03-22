@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="entertainme" default="install-locally" basedir=".">
+    <taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+    <macrodef name="normalize-paths-and-add-to-path">
+        <attribute name="install.folder"/>
+        <sequential>
+            <property environment="env"/>
+            <local name="path.result"/>
+            <local name="path.result.dir"/>
+            <path id="output.path.dir">
+                <pathelement path="@{install.folder}"/>
+            </path>
+            <path id="output.path">
+                <pathelement location="@{install.folder}/eme.jar"/>
+            </path>
+            <if>
+                <os family="windows"/>
+                <then>
+                    <pathconvert property="path.result" refid="output.path" dirsep="\"/>
+                    <pathconvert property="path.result.dir" refid="output.path.dir" dirsep="\"/>
+                    <replace dir="@{install.folder}" token="eme.jar" value="${path.result}" includes="*.bat"/>
+                    <exec executable="setx">
+                        <arg line="Path &quot;${env.Path};${path.result.dir}&quot;"/>
+                        <arg line="/m"/>
+                    </exec>
+                </then>
+                <elseif>
+                    <os family="unix"/>
+                    <then>
+                        <pathconvert property="path.result" refid="output.path" dirsep="/"/>
+                        <pathconvert property="path.result.dir" refid="output.path.dir" dirsep="/"/>
+                        <replace dir="@{install.folder}" token="eme.jar" value="${path.result}" includes="*.sh"/>
+                        <chmod file="@{install.folder}/eme.sh" perm="ugo+rx"/>
+                        <exec executable="sudo">
+                            <arg line="install @{install.folder}/eme.sh /usr/local/bin/eme"/>
+                        </exec>
+                    </then>
+                </elseif>
+                <else>
+                    <fail message="Unsupported OS!"/>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <target name="install-locally">
+        <property name="build.output" value="${basedir}/target"/>
+        <property name="home.dir" value="${user.home}"/>
+        <property name="install.folder" value="${home.dir}/.eme"/>
+        <property name="jar.file" value="${build.output}/${jar.name}"/>
+        <property name="output.jar.file" value="${install.folder}/eme.jar"/>
+        <property name="resources.dir" value="${basedir}/tools/dist"/>
+
+        <echo message="Installing files..."/>
+        <delete dir="${install.folder}"/>
+        <mkdir dir="${install.folder}"/>
+        <copy file="${jar.file}" tofile="${output.jar.file}" overwrite="true"/>
+        <copy todir="${install.folder}" overwrite="true">
+            <fileset dir="${resources.dir}" includes="**"/>
+        </copy>
+
+        <echo message="Updating PATH variable..."/>
+        <normalize-paths-and-add-to-path install.folder="${install.folder}"/>
+    </target>
+</project>
