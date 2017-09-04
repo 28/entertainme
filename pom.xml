@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.paranoidtimes</groupId>
+    <groupId>org.theparanoidtimes</groupId>
     <artifactId>entertainme</artifactId>
     <version>0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -17,11 +17,12 @@
             <id>28</id>
             <name>Dejan Josifović</name>
             <email>Rajoduo@yahoo.com</email>
-            <organization>paranoidtimes.com</organization>
+            <organization>theparanoidtimes.org</organization>
         </developer>
     </developers>
     <organization>
-        <name>paranoidtimes.com</name>
+        <name>theparanoidtimes.org</name>
+        <url>http://theparanoidtimes.org</url>
     </organization>
     <licenses>
         <license>

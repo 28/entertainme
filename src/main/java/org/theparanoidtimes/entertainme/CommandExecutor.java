@@ -1,4 +1,4 @@
-package com.paranoidtimes.entertainme;
+package org.theparanoidtimes.entertainme;
 
 import org.apache.commons.cli.CommandLine;
 

@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Name: entertainme
 Specification-Title: entertainme
 Specification-Version: 0.1
-Specification-Vendor: paranoidtimes.com
+Specification-Vendor: theparanoidtimes.org
 Implementation-Title: entertainme
 Implementation-Version: 0.1
-Implementation-Vendor: paranoidtimes.com
-Main-Class: com.paranoidtimes.entertainme.EntertainMeCli
+Implementation-Vendor: theparanoidtimes.org
+Main-Class: org.theparanoidtimes.entertainme.EntertainMeCli
 

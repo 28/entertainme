@@ -55,4 +55,4 @@ are located [here](tools/dist/entertainers.properties).
 Distributed under
 [GNU GENERAL PUBLIC LICENSE Version 2](src/main/resources/META-INF/LICENSE.txt)
 
-Copyright &copy; Dejan Josifović 2017.
+Copyright &copy; Dejan Josifović, the paranoid times 2017.
